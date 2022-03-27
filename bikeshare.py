@@ -1,7 +1,11 @@
 import time
 import pandas as pd
 import numpy as np
+from zipfile import Zipfile
 
+file_name = 'bikeshare-datasets.zip'
+with Zipfile(file_name, 'r) as zip:
+	zip.extractall()
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -96,8 +100,8 @@ def load_data(city, month, day):#Done!!
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    df = pd.read_csv(CITY_DATA[city]) #loading file of specific city
-
+    #df = pd.read_csv(CITY_DATA[city]) #loading file of specific city
+    
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
